@@ -15,7 +15,8 @@ const URL = "https://evening-anchorage-3159.herokuapp.com/api";
 export class PickComponent implements OnInit {
 
   @ViewChild('import_master_list') master_list
-  students = [];
+  students          = [];
+  called_students   = [];
 //   students = [
 //     { 'Student_ID': 0, 'Student_Name': "bali-os, liezel joyce n." },
 //     { 'Student_ID': 1, 'Student_Name': "bolivar, princess" },
@@ -60,10 +61,13 @@ export class PickComponent implements OnInit {
     firstEl.style.color         = "black";
     firstEl.style.fontSize      = '1em';
     
-    var self = this;
-    let total: number = self.students.length;
-    let selected = Math.floor(Math.random() * total);
-    let i: number = 0;
+    var self            = this;
+    let total: number   = self.students.length;
+    let selected        = Math.floor(Math.random() * total);
+    let i: number       = 0;
+    var table_tbody     = "";
+    
+    $("#tbody_called_list").empty();
     
     console.log(this.students, "TEST");
     // document.getElementById("display_name").innerHTML = "";
@@ -71,18 +75,28 @@ export class PickComponent implements OnInit {
       setTimeout((function(i){
           return function(){
               document.getElementById("display_name").innerHTML = self.students[i].Student_Name.toUpperCase();
+              
               if(i === selected ) {
+                self.called_students.push(self.students[i].Student_Name);
                 var el = document.getElementById("display_name");
                 el.innerHTML              = self.students[i].Student_Name.toUpperCase();
                 el.style.fontWeight       = 'bold';
                 firstEl.style.color       = "black";
                 el.style.fontSize         = '2em';
 
+                for(var j = 0; j < self.called_students.length; j++) {
+                  table_tbody += "<tr>";
+                    table_tbody += "<td>"+self.called_students[j].toUpperCase()+"</td>";
+                  table_tbody += "</tr>";
+                }
+                $("#tbody_called_list").append(table_tbody);
+
                 //animate it!
                 el.className += "animated ";
                 el.className += "infinite ";
                 el.className += "fadeIn";
                 console.log("Animate runs");
+                console.log(self.called_students, "Called");
               }
           };
       }(i)), i*50);
