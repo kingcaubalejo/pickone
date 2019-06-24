@@ -15,23 +15,23 @@ const URL = "https://evening-anchorage-3159.herokuapp.com/api";
 export class PickComponent implements OnInit {
 
   @ViewChild('import_master_list') master_list
-
-  students = [
-    { 'Student_ID': 0, 'Student_Name': "bali-os, liezel joyce n." },
-    { 'Student_ID': 1, 'Student_Name': "bolivar, princess" },
-    { 'Student_ID': 2, 'Student_Name': "butlig, reziel r." },
-    { 'Student_ID': 3, 'Student_Name': "caravana, leo jomar t." },
-    { 'Student_ID': 4, 'Student_Name': "catanauan, gabriel paolo t." },
-    { 'Student_ID': 5, 'Student_Name': "dela cruz, lydon" },
-    { 'Student_ID': 6, 'Student_Name': "elarmo, jonelle g." },
-    { 'Student_ID': 7, 'Student_Name': "macaya, rosella p." },
-    { 'Student_ID': 8, 'Student_Name': "sarmiento, marikon d." },
-    { 'Student_ID': 9, 'Student_Name': "silawan, joven erick f." },
-    { 'Student_ID': 10, 'Student_Name': "sumang, liberty g." },
-    { 'Student_ID': 11, 'Student_Name': "surban, kathleen" },
-    { 'Student_ID': 12, 'Student_Name': "villanueva, melanie b." },
-    { 'Student_ID': 13, 'Student_Name': "villareal, ma. jessa" }
-];
+  students = [];
+//   students = [
+//     { 'Student_ID': 0, 'Student_Name': "bali-os, liezel joyce n." },
+//     { 'Student_ID': 1, 'Student_Name': "bolivar, princess" },
+//     { 'Student_ID': 2, 'Student_Name': "butlig, reziel r." },
+//     { 'Student_ID': 3, 'Student_Name': "caravana, leo jomar t." },
+//     { 'Student_ID': 4, 'Student_Name': "catanauan, gabriel paolo t." },
+//     { 'Student_ID': 5, 'Student_Name': "dela cruz, lydon" },
+//     { 'Student_ID': 6, 'Student_Name': "elarmo, jonelle g." },
+//     { 'Student_ID': 7, 'Student_Name': "macaya, rosella p." },
+//     { 'Student_ID': 8, 'Student_Name': "sarmiento, marikon d." },
+//     { 'Student_ID': 9, 'Student_Name': "silawan, joven erick f." },
+//     { 'Student_ID': 10, 'Student_Name': "sumang, liberty g." },
+//     { 'Student_ID': 11, 'Student_Name': "surban, kathleen" },
+//     { 'Student_ID': 12, 'Student_Name': "villanueva, melanie b." },
+//     { 'Student_ID': 13, 'Student_Name': "villareal, ma. jessa" }
+// ];
 
   // display: String = document.getElementById("display_name").innerHTML;
 
@@ -59,20 +59,21 @@ export class PickComponent implements OnInit {
     firstEl.innerHTML           = "Be ready, your name will be called randomly.";
     firstEl.style.color         = "black";
     firstEl.style.fontSize      = '1em';
-
-    let total: number = this.students.length;
+    
+    var self = this;
+    let total: number = self.students.length;
     let selected = Math.floor(Math.random() * total);
     let i: number = 0;
-    var self = this;
+    
     console.log(this.students, "TEST");
     // document.getElementById("display_name").innerHTML = "";
     for (i=0; i<total; i++) {
       setTimeout((function(i){
           return function(){
-              document.getElementById("display_name").innerHTML = this.students[i].Student_Name.toUpperCase();
+              document.getElementById("display_name").innerHTML = self.students[i].Student_Name.toUpperCase();
               if(i === selected ) {
                 var el = document.getElementById("display_name");
-                el.innerHTML              = this.students[i].Student_Name.toUpperCase();
+                el.innerHTML              = self.students[i].Student_Name.toUpperCase();
                 el.style.fontWeight       = 'bold';
                 firstEl.style.color       = "black";
                 el.style.fontSize         = '2em';
@@ -81,6 +82,7 @@ export class PickComponent implements OnInit {
                 el.className += "animated ";
                 el.className += "infinite ";
                 el.className += "fadeIn";
+                console.log("Animate runs");
               }
           };
       }(i)), i*50);
@@ -141,8 +143,8 @@ export class PickComponent implements OnInit {
           $("#tbody_master_list").append(table_tbody);
           console.log("END");
 
-          this.students = names;
-          console.log(this.students, "NEW STUDENT");
+          self.students = names;
+          console.log(self.students, "NEW STUDENT");
         }, 1000);
         // console.log(names, "TEST1");
       }
