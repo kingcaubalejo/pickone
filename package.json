@@ -12,7 +12,8 @@
     "electron": "ng build && electron .",
     "pack-win": "electron-packager . pickone-recitation-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/favicon.ico --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"PickOne\"",
     "pack-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/favicon.ico --prune=true --out=release-builds",
-    "pack-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds"
+    "pack-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "build-it": "ng build --aot=true --buildop"
   },
   "private": true,
   "dependencies": {
