@@ -1,6 +1,6 @@
 .card-content {
     height: 400px;
-    
+
     div {
         &:nth-child(1) {
             height: 100% !important;
@@ -53,4 +53,8 @@ nav, th {
 
 p, span {
     color: #ffd700 !important;
+}
+
+h3 {
+    color: #003366 !important;
 }
