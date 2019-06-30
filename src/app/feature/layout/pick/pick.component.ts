@@ -44,13 +44,14 @@ export class PickComponent implements OnInit {
     var table_tbody_done        = "";
     
     $("#tbody_called_list").empty();
-
+    console.log(self.students);
     for (i=0; i<total; i++) {
       setTimeout((function(i){
           return function(){
               document.getElementById("display_name").innerHTML = self.students[i].Student_Name.toUpperCase();
               
               if(i === selected ) {
+                console.log(i);
                 self.called_students.push(self.students[i].Student_Name);
 
                 var el                    = document.getElementById("display_name");
@@ -67,8 +68,10 @@ export class PickComponent implements OnInit {
                 }
                 $("#tbody_called_list").append(table_tbody_done);
 
-                //animate it!
+                //animate the selected name in the display
                 el.className = "animated infinite fadeIn";
+
+                self.students.splice(i, 1); 
               }
           };
       }(i)), i*50);
