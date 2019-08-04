@@ -17,6 +17,9 @@ const routes: Routes = [
       },{
         path: 'pick',
         loadChildren: './pick/pick.module#PickModule',
+      },{
+        path: 'groupme',
+        loadChildren: './groupme/groupme.module#GroupmeModule',
       }
     ]
   },{

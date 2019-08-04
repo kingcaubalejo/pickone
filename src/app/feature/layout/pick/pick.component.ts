@@ -71,7 +71,7 @@ export class PickComponent implements OnInit {
                 //animate the selected name in the display
                 el.className = "animated infinite fadeIn";
 
-                self.students.splice(i, 1); 
+                self.students.splice(i, 1);
               }
           };
       }(i)), i*50);

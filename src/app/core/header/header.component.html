@@ -12,15 +12,15 @@
       </div>
       <div id="navMenu" class="navbar-menu">
         <div class="navbar-end">
-          <a href="#" class="navbar-item is-active" routerLink="/pick">
+          <a class="navbar-item" routerLink="/pick" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <span>Pick Me</span>
           </a>
-          <a href="#" class="navbar-item" routerLink="/pick">
+          <a class="navbar-item" routerLink="/groupme" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
             <span>Group Me</span>
           </a>
-          <a href="#" class="navbar-item">
+          <!-- <a href="#" class="navbar-item">
             <span>Feedback</span>
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
